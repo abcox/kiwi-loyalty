@@ -27,6 +27,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,12 +84,15 @@
     <Compile Include="addCustomerPointsForm.Designer.cs">
       <DependentUpon>addCustomerPointsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\CustomerData.cs" />
+    <Compile Include="Models\CustomerVisit.cs" />
     <Compile Include="FloatButton.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FloatButton.Designer.cs">
       <DependentUpon>FloatButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="RedeemCustomerPoints.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,5 +163,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,50 +19,23 @@ namespace KiwiLoyalty
 
         private void customerInformationSearchButton_Click(object sender, EventArgs e)
         {
-
             {
-                //Populate the Customer Details
-                // create sql connection object.  Be sure to put a valid connection string
-                SqlConnection Con = new SqlConnection("Data Source=HAYDEN-HOME-PC\\SQLEXPRESS;Initial Catalog=KiwiLoyalty;User ID=kiwiloyalty;Password=kiwi1");
+                var customerData = new DAL.CustomerData();
+                var customer = customerData.GetCustomer(customerInformationFormPhoneNumberTextBox.Text);
 
-                SqlCommand cmd = new SqlCommand("select * from tblCustomer where phoneNumber = @phoneNumber", Con);
+                if (customer == null) return;
 
-                cmd.Parameters.AddWithValue("@phoneNumber", customerInformationFormPhoneNumberTextBox.Text);
+                customerInformationFormFirstNameTextBox.Text = customer.FirstName;
+                customerInformationFormLastNameTextBox.Text = customer.LastName;
+                customerInformationFormEmailTextBox.Text = customer.EmailAddress;
+                customerInformationFormBirthdayPicker.Text = customer.BirthDate?.ToShortDateString();
+                customerInformationCurrentPointsBalanceTextBox.Text = customer.PointsBalance.ToString();
+                customerInformationFormLifetimePointsBalanceTextBox.Text = customer.PointsTotal.ToString();
 
-                Con.Open();
+                var visits = customerData.GetCustomerVisits(customer.PhoneNumber);
 
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                if (dr.HasRows)
-                {
-                    dr.Read();
-                    customerInformationFormFirstNameTextBox.Text = dr["firstName"].ToString();
-                    customerInformationFormLastNameTextBox.Text = dr["lastName"].ToString();
-                    customerInformationFormEmailTextBox.Text = dr["email"].ToString();
-                    customerInformationFormBirthdayPicker.Text = dr["birthday"].ToString();
-                    customerInformationCurrentPointsBalanceTextBox.Text = dr["pointsBalanceCurrent"].ToString();
-                    customerInformationFormLifetimePointsBalanceTextBox.Text = dr["pointsBalanceLifetime"].ToString();
-                    Con.Close();
-
-                }
-
-                //fill Visits Data Table
-                SqlConnection Con2 = new SqlConnection("Data Source=HAYDEN-HOME-PC\\SQLEXPRESS;Initial Catalog=KiwiLoyalty;User ID=kiwiloyalty;Password=kiwi1");
-
-                SqlCommand cmd2 = new SqlCommand("select dateOfEntry as Date, entryType as Type, pointsAdded as Plus, pointsRedeemed as Minus, RedeemedReason as Notes from tblvisits where phoneNumber = @phoneNumber", Con2);
-
-                cmd2.Parameters.AddWithValue("@phoneNumber", customerInformationFormPhoneNumberTextBox.Text);
-
-                Con.Open();
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd2);
-
-                DataTable dtrecord = new DataTable();
-                da.Fill(dtrecord);
-                customerInformationVisitsDataGridView.DataSource = dtrecord;
+                customerInformationVisitsDataGridView.DataSource = visits;
                 customerInformationVisitsDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-
             }
         }
 
