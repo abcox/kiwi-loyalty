@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0296E0E1-A2A9-41C8-BCE7-0A3F033A22C1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KiwiLoyalty</RootNamespace>
+    <AssemblyName>KiwiLoyalty</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>96F8430969C8F9D46BC9751800E01EC5F9853387</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>KiwiLoyalty_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="customerInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customerInformation.Designer.cs">
+      <DependentUpon>customerInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addCustomerPointsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addCustomerPointsForm.Designer.cs">
+      <DependentUpon>addCustomerPointsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FloatButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FloatButton.Designer.cs">
+      <DependentUpon>FloatButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedeemCustomerPoints.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedeemCustomerPoints.Designer.cs">
+      <DependentUpon>RedeemCustomerPoints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newCustomerForm.Designer.cs">
+      <DependentUpon>newCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kiwiLoyaltyHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kiwiLoyaltyHome.Designer.cs">
+      <DependentUpon>kiwiLoyaltyHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="customerInformation.resx">
+      <DependentUpon>customerInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addCustomerPointsForm.resx">
+      <DependentUpon>addCustomerPointsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FloatButton.resx">
+      <DependentUpon>FloatButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newCustomerForm.resx">
+      <DependentUpon>newCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kiwiLoyaltyHome.resx">
+      <DependentUpon>kiwiLoyaltyHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RedeemCustomerPoints.resx">
+      <DependentUpon>RedeemCustomerPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="KiwiLoyalty_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KiwiLogoJPG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

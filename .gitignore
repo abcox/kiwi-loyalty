@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/KiwiLoyalty/v15
+/.vs/tsNumericKeypad/v15/Server/sqlite3
+/.vs/tsNumericKeypad/v15
+/KiwiLoyalty/bin/Debug
+/KiwiLoyalty/obj/Debug
+/KiwiLoyalty/publish
+/tsNumericKeypad/bin/Debug
+/tsNumericKeypadTest/obj/x86/Debug
+/tsNumericKeypadTest/bin/Debug
+/tsNumericKeypad/obj/x86/Debug
