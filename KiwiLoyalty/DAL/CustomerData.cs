@@ -12,6 +12,7 @@ namespace KiwiLoyalty.DAL
 {
     class CustomerData
     {
+        // "Data Source=HAYDEN-HOME-PC\\SQLEXPRESS;Initial Catalog=KiwiLoyalty;User ID=kiwiloyalty;Password=kiwi1"
         public const string ConnectionString = "Data Source=(local);Initial Catalog=KiwiLoyalty;User ID=kiwiloyalty;Password=kiwi1";
 
         public CustomerData()
@@ -21,7 +22,6 @@ namespace KiwiLoyalty.DAL
 
         public Customer GetCustomer(string phoneNumber)
         {
-
             //Populate the Customer Details
             // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection(ConnectionString);
@@ -91,8 +91,37 @@ namespace KiwiLoyalty.DAL
             cnn.Close();
 
             return result;
-            ;
         }
         
+        public void AddCustomer(Customer customer)
+        {
+            // create sql connection object.  Be sure to put a valid connection string
+            SqlConnection cnn = new SqlConnection(ConnectionString);
+
+            // create command object with SQL query and link to connection object
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblCustomer " +
+                "(firstName, lastName, phoneNumber, email, emailAuth, birthday) " +
+                "VALUES(@firstName, @lastName, @phoneNumber, @email, @emailAuth, @birthday)",
+                cnn);
+
+            cmd.Parameters.AddWithValue("@birthday", customer.BirthDate);
+            cmd.Parameters.AddWithValue("@email", customer.EmailAddress);
+            cmd.Parameters.AddWithValue("@emailAuth", customer.IsEmailAuthorized);
+            cmd.Parameters.AddWithValue("@firstName", customer.FirstName);
+            cmd.Parameters.AddWithValue("@lastName", customer.LastName);
+            cmd.Parameters.AddWithValue("@phoneNumber", customer.PhoneNumber);
+
+            // open sql connection
+            cnn.Open();
+
+            // execute the query and return number of rows affected, should be one
+
+            //Catch SQL Errors
+
+            int RowsAffected = cmd.ExecuteNonQuery();
+
+            // close connection when done
+            cnn.Close();            
+        }
     }
 }
