@@ -85,6 +85,7 @@
       <DependentUpon>addCustomerPointsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\CustomerData.cs" />
+    <Compile Include="Models\CustomerPointsEntry.cs" />
     <Compile Include="Models\CustomerVisit.cs" />
     <Compile Include="FloatButton.cs">
       <SubType>Form</SubType>

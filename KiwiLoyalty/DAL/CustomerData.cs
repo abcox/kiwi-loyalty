@@ -22,8 +22,6 @@ namespace KiwiLoyalty.DAL
 
         public Customer GetCustomer(string phoneNumber)
         {
-            //Populate the Customer Details
-            // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand("select * from tblCustomer where phoneNumber = @phoneNumber", Con);
@@ -65,17 +63,11 @@ namespace KiwiLoyalty.DAL
 
             cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
 
-
             SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
-            //DataSet ds = new DataSet();
+
             da.Fill(dt);
-
-
-            //DataTable dt = ds.Tables(0);
-
-            //var result = dt.Rows.OfType<CustomerVisit>().AsEnumerable().ToList();
 
             var result = dt.AsEnumerable().Select(m => new CustomerVisit()
             {
@@ -122,6 +114,36 @@ namespace KiwiLoyalty.DAL
 
             // close connection when done
             cnn.Close();            
+        }
+
+        public void AddCustomerPoints(CustomerPointsEntry entry)
+        {
+            // create sql connection object.  Be sure to put a valid connection string
+            SqlConnection cnn = new SqlConnection(ConnectionString);
+
+            // create command object with SQL query and link to connection object
+            SqlCommand cmd = new SqlCommand(
+                "exec sp_AddPoints @phoneNumber, @pointsAdded, @dateOfEntry, @entryType,@pointsRedeemed",
+                cnn
+                );
+
+            cmd.Parameters.AddWithValue("@phoneNumber", entry.PhoneNumber);
+            cmd.Parameters.AddWithValue("@pointsAdded", entry.PointsAdded);
+            cmd.Parameters.AddWithValue("@dateOfEntry", entry.EntryDate);
+            cmd.Parameters.AddWithValue("@entryType", entry.EntryType);
+            cmd.Parameters.AddWithValue("@pointsRedeemed", entry.PointsRedeemed);
+
+            // open sql connection
+            cnn.Open();
+
+            // execute the query and return number of rows affected, should be one
+
+            //Catch SQL Errors
+
+            int RowsAffected = cmd.ExecuteNonQuery();
+
+            // close connection when done
+            cnn.Close();
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace KiwiLoyalty
 {
@@ -50,18 +49,20 @@ namespace KiwiLoyalty
                 MessageBox.Show("The Customer was successfully saved to the database.");
                 this.Close();
             }
-            catch (SqlException f) when (f.Number == 2627)
+            //catch (SqlException f) when (f.Number == 2627)
+            //{
+            //    MessageBox.Show("That Phone Number Already Exists in the Database. Please Enter another number or use existing customer entry form.");
+            //}
+            //catch (SqlException f) when (f.Number == 8152)
+            //{
+            //    MessageBox.Show("One of your fields is too long, fix it.");
+            //}
+            //finally
+            //{
+            //}
+            catch (Exception ex)
             {
-                MessageBox.Show("That Phone Number Already Exists in the Database. Please Enter another number or use existing customer entry form.");
-            }
-
-            catch (SqlException f) when (f.Number == 8152)
-            {
-                MessageBox.Show("One of your fields is too long, fix it.");
-            }
-            finally
-            {
-                
+                MessageBox.Show($"An error occurred with message: {ex.Message}");
             }
         }
     }

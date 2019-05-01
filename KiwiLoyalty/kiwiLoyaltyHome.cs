@@ -15,8 +15,6 @@ namespace KiwiLoyalty
         public KiwiLoyaltyHomeForm()
         {
             InitializeComponent();
-            
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,13 +39,8 @@ namespace KiwiLoyalty
 
         private void homeNewCustomerButton_Click(object sender, EventArgs e)
         {
-            
             newCustomerEntryForm f2 = new newCustomerEntryForm();
             f2.ShowDialog();
-            
-          
-
-
         }
 
         private void homeViewCustomerInformation_Click(object sender, EventArgs e)
